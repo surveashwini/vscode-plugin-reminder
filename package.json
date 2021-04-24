@@ -1,0 +1,65 @@
+{
+    "name": "reminder",
+    "displayName": "Reminder",
+    "description": "Reminder to help you manage better",
+    "version": "0.0.5",
+    "publisher": "ashwinisurve",
+    "engines": {
+        "vscode": "^1.29.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:reminder.remindme"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [{
+            "command": "reminder.remindme",
+            "title": "Set Reminder"
+        }],
+        "configuration": {
+            "title": "Reminder Configuration",
+            "properties": {
+                "reminder.reminderDuration": {
+                    "type": ["string"],
+                    "default": "1",
+                    "description": "Specifies the interval by when you wish to be reminded! Specify the value in hours"
+                },
+                "reminder.reminderText": {
+                    "type": ["string", "null"],
+                    "header": "Reminder",
+                    "default": "Hey! Don't forget to push the code before logging out",
+                    "description": "Specifies the text of the reminder"
+                }
+            }
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/surveashwini/vscode-plugin-reminder.git"
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "typescript": "^3.3.1",
+        "vscode": "^1.1.28",
+        "tslint": "^5.12.1",
+        "@types/node": "^10.12.21",
+        "@types/mocha": "^2.2.42",
+        "@types/glob": "^7.1.3",
+        "eslint": "^7.19.0",
+        "@typescript-eslint/eslint-plugin": "^4.14.1",
+        "@typescript-eslint/parser": "^4.14.1",
+        "glob": "^7.1.6",
+        "mocha": "^8.2.1",
+        "vscode-test": "^1.5.0"
+    }
+}
