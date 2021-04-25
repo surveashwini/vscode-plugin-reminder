@@ -2,7 +2,7 @@
     "name": "reminder",
     "displayName": "Reminder",
     "description": "Reminder to help you manage better",
-    "version": "0.0.5",
+    "version": "0.0.18",
     "publisher": "ashwinisurve",
     "engines": {
         "vscode": "^1.29.0"
@@ -11,39 +11,43 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:reminder.remindme"
+        "onCommand:reminder.remindme",
+        "*"
     ],
+    "homepage": "https://github.com/surveashwini/vscode-plugin-reminder",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/surveashwini/vscode-plugin-reminder"
+    },
     "main": "./out/extension.js",
     "contributes": {
         "commands": [{
             "command": "reminder.remindme",
-            "title": "Set Reminder"
+            "title": "Set Reminder",
+            "category": "reminder"
         }],
         "configuration": {
-            "title": "Reminder Configuration",
+            "title": "Reminder",
             "properties": {
                 "reminder.reminderDuration": {
-                    "type": ["string"],
+                    "type": "string",
                     "default": "1",
                     "description": "Specifies the interval by when you wish to be reminded! Specify the value in hours"
                 },
                 "reminder.reminderText": {
-                    "type": ["string", "null"],
-                    "header": "Reminder",
+                    "type": "string",
                     "default": "Hey! Don't forget to push the code before logging out",
                     "description": "Specifies the text of the reminder"
                 }
             }
         }
     },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/surveashwini/vscode-plugin-reminder.git"
-    },
+
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
         "pretest": "npm run compile && npm run lint",
         "lint": "eslint src --ext ts",
         "test": "node ./out/test/runTest.js"
